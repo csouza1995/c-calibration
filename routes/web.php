@@ -14,4 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', Home::class);
+// home
+Route::get('/', Home::class)->name('home');
+
+// versions
+Route::name('versions.')->prefix('versions')->group(base_path('routes/web/info/versions.php'));
+
+// instructions
+Route::name('instructions.')->prefix('instructions')->group(base_path('routes/web/info/instructions.php'));
