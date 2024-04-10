@@ -1,20 +1,71 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+@extends('components.layouts.base')
 
-        <title>{{ $title ?? 'Page Title' }}</title>
+@section('content')
+    <div class="flex flex-col h-screen" x-data="app">
+        {{-- header --}}
+        <x-layouts.header />
 
-        @vite('resources/css/app.css')
-        @vite('resources/js/app.js')
+        {{-- nav sidebar --}}
+        <x-layouts.navbar />
 
-        @stack('styles')
-    </head>
+        {{-- content --}}
+        <div class="flex-1 p-4">
+            <div class="container">
+                {{-- page address --}}
+                <div class="mb-4">
+                    <span class="text-xl text-gray-500">
+                        @forelse ($links ?? [] as $link)
+                            @if (!$loop->first)
+                                <i class="fas fa-angle-right fa-xs mx-2"></i>
+                            @endif
 
-    <body>
-        {{ $slot }}
+                            @if (isset($link['route']))
+                                <a href="{{ $link['route'] }}" class="hover:text-cyan-800">{{ $link['name'] }}</a>
+                            @else
+                                <span>{{ $link['name'] }}</span>
+                            @endif
+                        @empty
+                            <span>Home</span>
+                        @endforelse
+                    </span>
+                </div>
 
-        @stack('scripts')
-    </body>
-</html>
+                {{ $slot }}
+            </div>
+        </div>
+
+        {{-- footer --}}
+        <x-layouts.footer />
+    </div>
+@endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('app', () => ({
+                // data
+                nav_sidebar: {
+                    open: false
+                },
+                header: {
+                    user_dropdown: {
+                        open: false
+                    }
+                },
+
+                // methods
+                toogleNavSidebar() {
+                    this.nav_sidebar.open = true
+                },
+                toogleUserDropdown() {
+                    this.header.user_dropdown.open = !this.header.user_dropdown.open
+                },
+
+                // methods
+                init() {
+                    console.log('navbar component initialized')
+                }
+            }))
+        })
+    </script>
+@endpush
