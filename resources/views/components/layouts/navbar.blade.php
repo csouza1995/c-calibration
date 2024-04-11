@@ -13,14 +13,14 @@
             <ul>
                 <li class="mb-1">
                     <a class="block p-4 text-sm font-semibold text-gray-200 hover:bg-cyan-50 hover:text-cyan-800 rounded"
-                        href="#">
+                        href="{{ route('home') }}" wire:navigate>
                         <i class="fas fa-home fa-lg mr-2 w-5"></i>
-                        Home
+                        Página Inicial
                     </a>
                 </li>
                 <li class="mb-1">
                     <a class="block p-4 text-sm font-semibold text-gray-200 hover:bg-cyan-50 hover:text-cyan-800 rounded"
-                        href="#">
+                        href="{{ route('records.index') }}" wire:navigate>
                         <i class="fas fa-table fa-lg mr-2 w-5"></i>
                         Cadastro
                     </a>
@@ -41,7 +41,7 @@
                 </li>
                 <li class="mb-1">
                     <a class="block p-4 text-sm font-semibold text-gray-200 hover:bg-cyan-50 hover:text-cyan-800 rounded"
-                        href="#">
+                        href="#" wire:navigate>
                         <i class="fas fa-ranking-star fa-lg mr-2 w-5"></i>
                         Análise de Instrumentos
                     </a>
@@ -55,9 +55,9 @@
                 </li>
                 <li class="mb-1">
                     <a class="block p-4 text-sm font-semibold text-gray-200 hover:bg-cyan-50 hover:text-cyan-800 rounded"
-                        href="#">
+                        href="{{ route('instructions.index') }}" wire:navigate>
                         <i class="fas fa-question-circle fa-lg mr-2 w-5"></i>
-                        Ajuda
+                        Instruções de Uso
                     </a>
                 </li>
             </ul>

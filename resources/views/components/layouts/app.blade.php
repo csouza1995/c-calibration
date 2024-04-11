@@ -10,26 +10,13 @@
 
         {{-- content --}}
         <div class="flex-1 p-4">
-            <div class="container">
+            <div class="container w-full mx-auto">
                 {{-- page address --}}
                 <div class="mb-4">
-                    <span class="text-xl text-gray-500">
-                        @forelse ($links ?? [] as $link)
-                            @if (!$loop->first)
-                                <i class="fas fa-angle-right fa-xs mx-2"></i>
-                            @endif
-
-                            @if (isset($link['route']))
-                                <a href="{{ $link['route'] }}" class="hover:text-cyan-800">{{ $link['name'] }}</a>
-                            @else
-                                <span>{{ $link['name'] }}</span>
-                            @endif
-                        @empty
-                            <span>Home</span>
-                        @endforelse
-                    </span>
+                    @yield('breadcrumbs')
                 </div>
 
+                {{-- slot --}}
                 {{ $slot }}
             </div>
         </div>

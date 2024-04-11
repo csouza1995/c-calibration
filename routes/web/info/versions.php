@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Info\VersionsIndex;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => view('info.versions'))->name('index');
+Route::get('/', VersionsIndex::class)->name('index');

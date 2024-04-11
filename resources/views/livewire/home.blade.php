@@ -1,3 +1,7 @@
+@section('breadcrumbs')
+    <x-layouts.breadcrumbs :links="$links"></x-layouts.breadcrumbs>
+@endsection
+
 <div>
-    {{-- TODO: card summary --}}
+    {{-- The best athlete wants his opponent at his best. --}}
 </div>
